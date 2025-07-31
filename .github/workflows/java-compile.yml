@@ -2,9 +2,8 @@ name: Compile Java Main
 
 on:
   push:
-    paths:
-      - 'Main.java'
-  workflow_dispatch:
+    branches: [ main ]
+  workflow_dispatch:  # 수동 실행 지원
 
 jobs:
   compile-java:
