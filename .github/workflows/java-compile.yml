@@ -1,0 +1,26 @@
+name: Compile Java Main
+
+on:
+  push:
+    paths:
+      - 'Main.java'
+  workflow_dispatch:
+
+jobs:
+  compile-java:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Compile Main.java
+        run: |
+          mkdir -p out
+          javac Main.java -d out
+
+      - name: Upload Main.class
+        uses: actions/upload-artifact@v4
+        with:
+          name: Main-class-file
+          path: out/Main.class
